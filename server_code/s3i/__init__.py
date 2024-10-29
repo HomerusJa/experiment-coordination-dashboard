@@ -4,7 +4,7 @@ import anvil.secrets
 import httpx
 
 from .. import logs
-from .s3i import broker
+from . import broker
 
 __all__ = ["global_client", "global_broker", "s3i_logger"]
 
