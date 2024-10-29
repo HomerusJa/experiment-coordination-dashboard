@@ -1,0 +1,77 @@
+allow_embedding: false
+db_schema:
+  files:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: path
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: file
+      type: media
+    - admin_ui: {order: 2, width: 200}
+      name: file_version
+      type: string
+    server: full
+    title: Files
+  images:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: s3i-cam-identifier
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: s3i-message-identifier
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: taken-at
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: path
+      type: string
+    - admin_ui: {order: 2.5, width: 200}
+      name: sent-at
+      type: datetime
+    - admin_ui: {order: 2.75, width: 200}
+      name: received-at
+      type: datetime
+    - admin_ui: {order: 0.5, width: 200}
+      name: rhizotron-number
+      type: number
+    server: full
+    title: images
+name: Experiment Coordinator Dashboard
+native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
+package_name: Experiment_Coordinator_Dashboard
+runtime_options:
+  client_version: '3'
+  server_spec: {base: python310-datascience}
+  server_version: python3-sandbox
+  version: 2
+scheduled_tasks: []
+secrets:
+  s3i_event_queue:
+    type: secret
+    value: {K7P2QNQGSCS45AVS: 1lDohUqQacLZuHEphK3BmCSZ3Xx7EmWgbEcRt535lSvCkJYn1YG6C2qvWuDYuPckJ/rgIm8koM4/vClrzmth+kL5FoPnAyYwSkzsRirT5HDPRVuxxdZaX95lDCk/43JPn3c2WSk7uPqHKlh9C0MtzljYQQQCT2P8YrBglV7kfC4O7rfZ2HxG09OY0qG8Ui+plhlSBA9LHw==}
+  s3i_id:
+    type: secret
+    value: {K7P2QNQGSCS45AVS: Aj/ueWn7omKpr3mOIT9Lxb2q2CnvLx4BAoYwkEFOwjYrLn97MDnXhvuoKY6+85I5uuyG+R3s1Ju9SyQZPVyc+Zf6c1yMkZ/MBqTdL9N/KB5pl0s/z1/WAVlAVQVeYWUzDaEWsCiBoCqUVbo2h9wIa5xYApf/WxmOFaEACOt+zZCaP9uEn/3O}
+  s3i_message_queue:
+    type: secret
+    value: {K7P2QNQGSCS45AVS: UlmWuFrOu7Y4xr0zX8QcI2WWDvzwtzx5jx1PMauyIMvFxKpavpcel0/vniDJ1sYVo3FtoaJHfHlrnHGpgv/tfxtp3pDFiic0/Rg+QdKAio9OhrDYG2n26OOGgAs/rjg4MuUiiHldqK/oX31Z6EsQS0+f2x+jtd3Q/Eew/rGpNdtO2+9dgqcoTVCYmZ4Y9zdBXA==}
+  s3i_secret:
+    type: secret
+    value: {K7P2QNQGSCS45AVS: Pby2Fd0UXbuZbz/BdkoyMswyPFX0DUNVm15UuFYREz4B3OAq5CUDNpw+SfNWd1QimhWTTF7HCdIv5nfB7Ax6EIFE/Cnik/kjHUd5GThB6tllsao1/DdvgtQ8NtomH+E+qA5R0Sy1csxF1fP1DifkTWDne54ar6yJQbiuaGDTZA==}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
+- client_config: {}
+  server_config: {file_table: files}
+  source: /runtime/services/anvil/files.yml
+startup: null
+startup_form: null
+uplink_visible: true
